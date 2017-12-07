@@ -52,14 +52,18 @@ public class SearchByInstructorActivity extends AppCompatActivity {
                     new OfferingListAdapter(this, R.layout.offering_list_item, filteredOfferingsList);
             offeringsListView.setAdapter(offeringListAdapter);
 
-        //TODO (1): Construct instructorSpinnerAdapter using the method getInstructorNames()
-        //TODO: to populate the spinner.
         ArrayAdapter<String> instructorSpinnerAdapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getInstructorNames());
         instructorSpinner.setAdapter(instructorSpinnerAdapter);
         instructorSpinner.setOnItemSelectedListener(instructorSpinnerListener);
     }
 
+    /**
+     * Collects all instructor names into an array.
+     * Used to populate the spinner.
+     *
+     * @return
+     */
     private String[] getInstructorNames()
     {
         String[] instructorNames = new String[allInstructorsList.size() + 1];
@@ -70,6 +74,12 @@ public class SearchByInstructorActivity extends AppCompatActivity {
         return instructorNames;
     }
 
+    /**
+     * Resets the filter of the list to show all possible items in the list.
+     * Plays a shake animation on the list.
+     *
+     * @param v
+     */
     public void reset(View v)
     {
         toggleShakeAnim(v);
@@ -105,8 +115,8 @@ public class SearchByInstructorActivity extends AppCompatActivity {
 
     /**
      * Plays the animation from shake_anim.xml
-     * Shakes the image horizontally
-     * Used in reset function
+     * Shakes the image horizontally.
+     * Used in reset function.
      *
      * @param v
      */
@@ -116,6 +126,12 @@ public class SearchByInstructorActivity extends AppCompatActivity {
         offeringsListView.startAnimation(shakeAnim);
     }
 
+    /**
+     * Starts the InstructorDetailsActivity.
+     * Sends the selected instructor's details to be displayed for the user.
+     *
+     * @param v
+     */
     public void viewInstructorDetails(View v)
     {
         LinearLayout selectedLayout = (LinearLayout) v;

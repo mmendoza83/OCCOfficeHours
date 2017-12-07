@@ -98,8 +98,6 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_F_HOURS + " TEXT" + ")";
         database.execSQL(createQuery);
 
-        //TODO:  Write the query to create the relationship table "Offerings"
-        //TODO:  Make sure to include foreign keys to the Courses, Departments, and Instructors tables
         createQuery = "CREATE TABLE " + OFFERINGS_TABLE + "("
                 + FIELD_COURSE_ID + " INTEGER, "
                 + FIELD_INSTRUCTOR_ID + " INTEGER, "
@@ -120,7 +118,6 @@ class DBHelper extends SQLiteOpenHelper {
         database.execSQL("DROP TABLE IF EXISTS " + INSTRUCTORS_TABLE);
         database.execSQL("DROP TABLE IF EXISTS " + OFFERINGS_TABLE);
 
-        //TODO:  Drop the Offerings table
         onCreate(database);
     }
 
@@ -319,10 +316,6 @@ class DBHelper extends SQLiteOpenHelper {
     */
 
     //********** OFFERING TABLE OPERATIONS:  ADD, GETALL, EDIT, DELETE
-    //TODO:  Create the following methods: addOffering, getAllOfferings, deleteOffering
-    //TODO:  deleteAllOfferings, updateOffering, and getOffering
-    //TODO:  Use the Courses and Instructors methods above as a guide.
-
 
     public void addOffering(int crn, int semesterCode, long courseId, long instructorId) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -369,7 +362,6 @@ class DBHelper extends SQLiteOpenHelper {
 
 
     //********** IMPORT FROM CSV OPERATIONS:  Courses, Instructors, Departments, and Offerings
-    //TODO:  Write the code for the import OfferingsFromCSV method.
 
     public boolean importCoursesFromCSV(String csvFileName) {
         AssetManager manager = mContext.getAssets();
