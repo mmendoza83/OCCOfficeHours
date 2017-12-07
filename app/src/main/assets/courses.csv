@@ -13,46 +13,64 @@
 13,CS,A132,Python Concepts Methodology 2
 14,CS,A140,C#.NET Programming
 15,CS,A257,Boolean Algebra and Logic
+
 16,MATH,A120,Trigonometry
 17,MATH,A170,Precalculus
 18,MATH,A180,Calculus 1
 19,MATH,A185,Calculus 2
 20,MATH,A280,Calculus 3
+
 21,CHEM,A100,Principles of Chemistry
 22,CHEM,A110,Introduction to Chemistry
 23,CHEM,A180,General Chemistry A
 24,CHEM,A185,General Chemistry B
+
 25,ACCT,A101,Financial Accounting
 26,ACCT,A102,Managerial Accounting
+
 27,ART,A111,Color & Design: 3-D
 28,ART,A150,Ceramics 1
 29,ART,A107,Introduction to Art
 30,ART,A110,Color & Design: 2-D
+
 31,BIOL,A221,Anatomy-Physiology
 32,BIOL,A100,Principles of Biology
 33,BIOL,A185,Diversity of Organisms
+
 34,BUS,A100,Intro to Business
 35,BUS,A139,Business Communication
+
 36,CMST,A110,Public Speaking
 37,CMST,A240,Media Literacy
+
 38,ECON,A170,Microeconomics
 39,ECON,A175,Macroeconomics
+
 40,ELEC,A047,Elec Problem Solving
 41,ELEC,A101,Robotics 1 Mech/Design
+
 42,ENGL,A100,Freshman Composition
 43,ENGL,A101,Critical Thinking/Rdg/Wrtg
 44,ENGL,A102,Critical Reasoning:Nonfiction
+
 45,FILM,A100,Hist & Apprec. of the Cinema
+
 46,GEOG,A100,World Regional Geography
 47,GEOG,A180,Physical Geography
+
 48,GEOL,A105,General Geology
 49,GEOL,A110,Physical Geology
+
 50,HIST,A175,History of U.S. Since 1876
 51,HIST,A180,Western Civilization I
+
 52,ID,A100,Fund of Interior Design
 54,ID,A105,Interior Dsgn Studio 1
+
 55,MUS,A115,Fundamentals of Music
 56,MUS,A100,Hist & Appreciation of Music
+
 57,PHIL,A100,Introduction to Philosophy
+
 58,PHYS,A185,Calculus Based Physics:Mech
 59,PHYS,A280,Calculus Based Phys:Elec/Mag
