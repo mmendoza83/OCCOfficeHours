@@ -50,24 +50,10 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_R_HOURS= "thursday";
     private static final String FIELD_F_HOURS= "friday";
 
-    /*
-    //TASK: DEFINE THE FIELDS (COLUMN NAMES FOR THE DEPARTMENT TABLE
-    public static final String DEPARTMENT_TABLE = "Departments";
-    public static final String DEPARTMENT_KEY_FIELD_ID = "_id";
-    public static final String FIELD_DEPARTMENT_NAME = "department_name";
-    */
     //TASK: DEFINE THE FIELDS (COLUMN NAMES) FOR THE OFFERINGS TABLE
     private static final String OFFERINGS_TABLE = "Offerings";
     private static final String FIELD_COURSE_ID = "course_id";
     private static final String FIELD_INSTRUCTOR_ID = "instructor_id";
-
-    /*
-    // TASK: DEFINE THE FIELDS (COLUMN NAMES) FOR THE DEPARTMENT_LIST TABLE
-    public static final String DEPARTMENT_LIST_TABLE = "DepartmentsList";
-    public static final String FIELD_id = "_id";
-    private static final String FIELD_DEPARTMENT_ID = "department_id";
-    private static final String FIELD_DEPARTMENT_INSTRUCTOR__ID = "instructor_id";
-    */
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -123,6 +109,20 @@ class DBHelper extends SQLiteOpenHelper {
 
     //********** COURSE TABLE OPERATIONS:  ADD, GETALL, EDIT, DELETE
 
+    public void addCourse(Course course)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(FIELD_ALPHA, course.getAlpha());
+        values.put(FIELD_NUMBER, course.getNumber());
+        values.put(FIELD_TITLE, course.getTitle());
+
+        db.insert(COURSES_TABLE, null, values);
+
+        db.close();
+    }
+
     public List<Course> getAllCourses() {
         List<Course> coursesList = new ArrayList<>();
         SQLiteDatabase database = this.getReadableDatabase();
@@ -171,7 +171,6 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
         return course;
     }
-
 
     //********** INSTRUCTOR TABLE OPERATIONS:  ADD, GETALL, EDIT, DELETE
 
@@ -299,22 +298,6 @@ class DBHelper extends SQLiteOpenHelper {
         return instructor;
     }
 
-    /*
-    //********** DEPARTMENT TABLE OPERATIONS:  ADD, GETALL, EDIT, DELETE
-
-    public void addDepartment(int id, String department) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put(DEPARTMENT_KEY_FIELD_ID, id);
-        values.put(FIELD_DEPARTMENT_NAME, department);
-
-        db.insert(DEPARTMENT_TABLE, null, values);
-
-        db.close();
-    }
-    */
-
     //********** OFFERING TABLE OPERATIONS:  ADD, GETALL, EDIT, DELETE
 
     public void addOffering(int crn, int semesterCode, long courseId, long instructorId) {
@@ -343,10 +326,9 @@ class DBHelper extends SQLiteOpenHelper {
         //COLLECT EACH ROW IN THE TABLE
         if (cursor.moveToFirst()) {
             do {
-                Course course = getCourse(cursor.getLong(2));
-                Instructor instructor = getInstructor(cursor.getLong(3));
-                Offering offering = new Offering(cursor.getInt(0),
-                        cursor.getInt(1), course, instructor);
+                Instructor instructor = getInstructor(cursor.getLong(0));
+                Course course = getCourse(cursor.getLong(1));
+                Offering offering = new Offering(course, instructor);
 
                 offeringsList.add(offering);
             } while (cursor.moveToNext());
@@ -355,11 +337,6 @@ class DBHelper extends SQLiteOpenHelper {
         database.close();
         return offeringsList;
     }
-
-
-
-
-
 
     //********** IMPORT FROM CSV OPERATIONS:  Courses, Instructors, Departments, and Offerings
 
@@ -386,7 +363,7 @@ class DBHelper extends SQLiteOpenHelper {
                 String alpha = fields[1].trim();
                 String number = fields[2].trim();
                 String title = fields[3].trim();
-                //addCourse(new Course(id, alpha, number, title));
+                addCourse(new Course(id, alpha, number, title));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -467,37 +444,5 @@ class DBHelper extends SQLiteOpenHelper {
         }
         return true;
     }
-
-    /*
-    public boolean importDepartmentFromCSV(String csvFileName) {
-        AssetManager am = mContext.getAssets();
-        InputStream inStream = null;
-        try {
-            inStream = am.open(csvFileName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(inStream));
-        String line;
-        try {
-            while ((line = buffer.readLine()) != null) {
-                String[] fields = line.split(",");
-                if (fields.length != 2) {
-                    Log.d("OCC Office Hours", "Skipping Bad CSV Row: " + Arrays.toString(fields));
-                    continue;
-                }
-                int departmentId = Integer.parseInt(fields[0].trim());
-                String departmentName = fields[1].trim();
-
-                addDepartment(departmentId, departmentName);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-    */
 }
 

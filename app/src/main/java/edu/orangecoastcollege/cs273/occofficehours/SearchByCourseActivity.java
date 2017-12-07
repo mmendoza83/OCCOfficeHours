@@ -18,7 +18,7 @@ import java.util.List;
 public class SearchByCourseActivity extends AppCompatActivity {
 
     private DBHelper db;
-    private List<Instructor> allInstructorsList;
+    //private List<Instructor> allInstructorsList;
     private List<Course> allCoursesList;
     private List<Offering> allOfferingsList;
     private List<Offering> filteredOfferingsList;
@@ -43,7 +43,7 @@ public class SearchByCourseActivity extends AppCompatActivity {
 
     allOfferingsList = db.getAllOfferings();
     filteredOfferingsList = new ArrayList<>(allOfferingsList);
-    allInstructorsList = db.getAllInstructors();
+    //allInstructorsList = db.getAllInstructors();
     allCoursesList = db.getAllCourses();
 
     courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
