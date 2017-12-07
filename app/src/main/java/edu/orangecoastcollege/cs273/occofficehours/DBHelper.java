@@ -300,7 +300,7 @@ class DBHelper extends SQLiteOpenHelper {
 
     //********** OFFERING TABLE OPERATIONS:  ADD, GETALL, EDIT, DELETE
 
-    public void addOffering(int crn, int semesterCode, long courseId, long instructorId) {
+    public void addOffering(long courseId, long instructorId) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -403,8 +403,6 @@ class DBHelper extends SQLiteOpenHelper {
                 String thursday = fields[10].trim();
                 String friday = fields[11].trim();
 
-                //Log.i("Name: ", ""+firstName);
-
                 addInstructor(new Instructor(id, lastName, firstName, email, departments,building,room,monday,tuesday,wednesday,thursday,friday));
             }
         } catch (IOException e) {
@@ -428,15 +426,13 @@ class DBHelper extends SQLiteOpenHelper {
         try {
             while ((line = buffer.readLine()) != null) {
                 String[] fields = line.split(",");
-                if (fields.length != 4) {
+                if (fields.length != 2) {
                     Log.d("OCC Office Hours", "Skipping Bad CSV Row: " + Arrays.toString(fields));
                     continue;
                 }
-                int crn = Integer.parseInt(fields[0].trim());
-                int semesterCode = Integer.parseInt(fields[1].trim());
-                long courseId = Long.parseLong(fields[2].trim());
-                long instructorId = Long.parseLong(fields[3].trim());
-                addOffering(crn, semesterCode, courseId, instructorId);
+                long instructorId = Long.parseLong(fields[0].trim());
+                long courseId = Long.parseLong(fields[1].trim());
+                addOffering(courseId, instructorId);
             }
         } catch (IOException e) {
             e.printStackTrace();

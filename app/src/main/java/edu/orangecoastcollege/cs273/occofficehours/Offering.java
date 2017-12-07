@@ -12,6 +12,10 @@ public class Offering{
         mInstructor = instructor;
     }
 
+    /**
+     *
+     * @return
+     */
     public Course getCourse() {
         return mCourse;
     }

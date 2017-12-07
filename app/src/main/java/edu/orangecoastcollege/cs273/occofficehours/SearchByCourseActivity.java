@@ -18,7 +18,7 @@ import java.util.List;
 public class SearchByCourseActivity extends AppCompatActivity {
 
     private DBHelper db;
-    //private List<Instructor> allInstructorsList;
+    //rivate List<Instructor> allInstructorsList;
     private List<Course> allCoursesList;
     private List<Offering> allOfferingsList;
     private List<Offering> filteredOfferingsList;
