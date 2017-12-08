@@ -20,13 +20,14 @@
     <string name="thursday_text">Thurs: </string>
     <string name="friday_text">Fri: </string>
 
+    <string name="make_reservation_button">Make Reservation</string>
     <string name="make_reservation">Make Reservation</string>
     <string name="from">From: </string>
     <string name="to">To: </string>
     <string name="subject">Subject: </string>
     <string name="subject_content">Make reservation for office hour</string>
     <string name="contents">CONTENTS:</string>
-    <string name="body_message" translatable="false">I would like to make a reservation for office hour on </string>
-    <string name="send_button">SEND</string>
+    <string name="body_message">I would like to make a reservation for office hour on </string>
+    <string name="compose_email_button">COMPOSE EMAIL</string>
 
 </resources>

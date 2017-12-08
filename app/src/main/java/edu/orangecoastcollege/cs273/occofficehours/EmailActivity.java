@@ -7,86 +7,61 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import java.util.List;
 
 public class EmailActivity extends AppCompatActivity {
 
-    private EditText senderEditText ;
     private EditText recipientEditText;
     private EditText subjectEditText;
     private EditText contentsEditText;
 
-    private String sender;
     private String recipient;
-    private String contents;
+    private String subject;
+    private String bodyText;
     private String monday;
     private String tuesday;
     private String wednesday;
     private String thursday;
     private String friday;
-    private String mon;
-    private String tues;
-    private String wed;
-    private String thurs;
-    private String fri;
-
-    private List<String> emails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email);
 
-        senderEditText = (EditText) findViewById(R.id.emailSenderEditText);
         recipientEditText = (EditText) findViewById(R.id.emailRecipientEditText);
         subjectEditText = (EditText)findViewById(R.id.emailSubjectEditText);
         contentsEditText = (EditText) findViewById(R.id.emailMessageBodyEditText);
 
         Intent detailsIntent = getIntent();
         recipient = detailsIntent.getStringExtra("Recipient");
-        mon = detailsIntent.getStringExtra("Monday");
-        tues = detailsIntent.getStringExtra("Tuesday");
-        wed = detailsIntent.getStringExtra("Wednesday");
-        thurs = detailsIntent.getStringExtra("Thursday");
-        fri = detailsIntent.getStringExtra("Friday");
 
-        if (!mon.equals("NA"))
-            monday = detailsIntent.getStringExtra("monday");
+        monday = detailsIntent.getStringExtra("Monday");
+        tuesday = detailsIntent.getStringExtra("Tuesday");
+        wednesday = detailsIntent.getStringExtra("Wednesday");
+        thursday = detailsIntent.getStringExtra("Thursday");
+        friday = detailsIntent.getStringExtra("Friday");
 
-        if ( !tues.equals("NA"))
-            tuesday = detailsIntent.getStringExtra("tuesday");
+        bodyText = getResources().getString(R.string.body_message);
 
-        if (!wed.equals("NA"))
-            wednesday = detailsIntent.getStringExtra("wednesday");
+        if ((monday != null) && !monday.equals("NA"))
+            bodyText += " Monday at " + monday;
+        if ((tuesday != null) && !tuesday.equals("NA"))
+            bodyText += " Tuesday at " + tuesday;
+        if ((wednesday != null) && !wednesday.equals("NA"))
+            bodyText += " Wednesday at " + wednesday;
+        if ((thursday != null) && !thursday.equals("NA"))
+            bodyText += " Thurday at " +  thursday;
+        if ((friday != null) && !friday.equals("NA"))
+            bodyText += " Friday at " + friday;
 
-        if (!thurs.equals("NA"))
-            thursday = detailsIntent.getStringExtra("thursday");
+        bodyText += ". \nThank you.";
 
-        if (!fri.equals("NA"))
-            friday = detailsIntent.getStringExtra("friday");
-
-        contents = getResources().getString(R.string.body_message);
-        if (!monday.equals("null"))
-            contents += " Monday at " + monday;
-        if (!tuesday.equals("null"))
-            contents += " Tuesday at " + tuesday;
-        if (!wednesday.equals("null"))
-            contents += " Wednesday at " + wednesday;
-        if (!thursday.equals("null"))
-            contents += " Thurday at " +  thursday;
-        if (!friday.equals("null"))
-            contents += " Friday at " + friday;
-
-        contents += " /nThank you.";
-
-        sender = emails.remove(0);
-        senderEditText.setText(sender);
         recipientEditText.setText(recipient);
 
-        subjectEditText.setText(R.string.subject_content);
-        contentsEditText.setText(contents);
+        subject = getResources().getString(R.string.subject_content);
+        subjectEditText.setText(subject);
+
+        contentsEditText.setText(bodyText);
 
         Button startBtn = (Button) findViewById(R.id.emailSendButton);
         startBtn.setOnClickListener(new View.OnClickListener() {
@@ -98,20 +73,16 @@ public class EmailActivity extends AppCompatActivity {
 
 
     protected void sendEmail() {
-        String TO = recipient;
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
 
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.setType("text/plain");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, R.string.subject_content);
-        emailIntent.putExtra(Intent.EXTRA_TEXT, contents);
-
-        try {
-            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-            finish();
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
-        }
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", recipient, null));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT,
+                subject);
+        emailIntent.putExtra(Intent.EXTRA_TEXT,
+                bodyText);
+        startActivity(Intent.createChooser(emailIntent, "Send email"));
     }
 }
+
+
+

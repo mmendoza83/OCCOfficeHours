@@ -76,22 +76,21 @@
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:text="@string/monday_text"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/mondayHoursTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:linksClickable="true"
-                android:text="TextView"
-                android:textSize="20sp"/>
+                android:text="TextView"/>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/mondayButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_weight="1"
+                android:text="@string/make_reservation_button"/>
 
         </LinearLayout>
 
@@ -107,16 +106,21 @@
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:text="@string/tuesday_text"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tuesdayHoursTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:linksClickable="true"
-                android:text="TextView"
-                android:textSize="20sp"/>
+                android:text="TextView"/>
+
+            <Button
+                android:id="@+id/tuesdayButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/make_reservation_button"/>
         </LinearLayout>
 
         <LinearLayout
@@ -131,16 +135,21 @@
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:text="@string/wednesday_text"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/wednesdayHoursTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:linksClickable="true"
-                android:text="TextView"
-                android:textSize="20sp"/>
+                android:text="TextView"/>
+            <Button
+                android:id="@+id/wednesdayButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/make_reservation_button"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -155,16 +164,22 @@
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:text="@string/thursday_text"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/thursdayHoursTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:linksClickable="true"
-                android:text="TextView"
-                android:textSize="20sp"/>
+                android:text="TextView"/>
+
+            <Button
+                android:id="@+id/thursdayButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/make_reservation_button"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -179,16 +194,22 @@
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:text="@string/friday_text"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/fridayHoursTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:linksClickable="true"
-                android:text="TextView"
-                android:textSize="20sp"/>
+                android:text="TextView"/>
+
+            <Button
+                android:id="@+id/fridayButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/make_reservation_button"/>
+
         </LinearLayout>
     </LinearLayout>
 
