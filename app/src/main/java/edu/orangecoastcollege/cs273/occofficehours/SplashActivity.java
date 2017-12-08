@@ -7,6 +7,11 @@ import android.os.Bundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Activity for a splash screen. Displays the activity_splash.xml.
+ *
+ * Created by mmendoza on 12/1/2017.
+ */
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -24,6 +29,7 @@ public class SplashActivity extends AppCompatActivity {
             }
         };
 
+        // Delays the start of the SearchActivity, displaying the splash screen for 3 seconds.
         Timer timer = new Timer();
         timer.schedule(task, 3000);
     }

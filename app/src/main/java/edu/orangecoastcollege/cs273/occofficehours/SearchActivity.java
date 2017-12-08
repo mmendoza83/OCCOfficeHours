@@ -5,6 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * Activity that allows the user to select whether to search for instructors by
+ * the instructor's name, the instructor's courses, or the instructor's department.
+ * Has a clickable text that starts the OCCMapActivity, showing OCC on a Google Map.
+ *
+ * Created by mmendoza on 12/1/2017.
+ */
 public class SearchActivity extends AppCompatActivity {
 
     @Override
@@ -42,7 +49,7 @@ public class SearchActivity extends AppCompatActivity {
     /**
      * Starts the SearchByDepartmentsActivity.
      * Allows the list to be filtered by a department,
-     * showing all the courses with instructors within the department.
+     * showing all the courses with their instructors within the department.
      *
      * @param v
      */
