@@ -1,8 +1,10 @@
 package edu.orangecoastcollege.cs273.occofficehours;
 
 /**
- * Created by on 12/1/2017.
+ * The Offering class represents a single course offering at Orange Coast College
+ * This class includes the Instructor Id and the Course Id
  */
+
 public class Offering{
     private Course mCourse;
     private Instructor mInstructor;
@@ -12,10 +14,6 @@ public class Offering{
         mInstructor = instructor;
     }
 
-    /**
-     *
-     * @return
-     */
     public Course getCourse() {
         return mCourse;
     }

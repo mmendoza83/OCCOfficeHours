@@ -13,8 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by on 12/1/2017.
+ * Helper class to provide custom adapter for the Offering list
  */
+
 public class OfferingListAdapter extends ArrayAdapter<Offering> {
 
     private Context mContext;

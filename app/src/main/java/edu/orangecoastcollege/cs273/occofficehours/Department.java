@@ -1,7 +1,8 @@
 package edu.orangecoastcollege.cs273.occofficehours;
 
 /**
- * Created on 12/4/2017.
+ * Created by Tu Anh on 12/4/2017.
+ * This file create an Department object
  */
 
 public class Department {

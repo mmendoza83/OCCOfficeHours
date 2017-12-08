@@ -11,12 +11,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+/*
+    EmailActivity class that build an email framework
+ */
+
 public class EmailActivity extends AppCompatActivity {
 
+    // Initialize the EditText variables
     private EditText recipientEditText;
     private EditText subjectEditText;
     private EditText contentsEditText;
 
+    // Declare the variables
     private String recipient;
     private String subject;
     private String bodyText;
@@ -26,6 +32,7 @@ public class EmailActivity extends AppCompatActivity {
     private String thursday;
     private String friday;
 
+    // Declare the Animation that is used for shaking the envelope ImageView
     private Animation evelopeAnim;
     private ImageView envelopImageView;
 
@@ -39,6 +46,7 @@ public class EmailActivity extends AppCompatActivity {
         contentsEditText = (EditText) findViewById(R.id.emailMessageBodyEditText);
         envelopImageView = (ImageView) findViewById(R.id.envelopImageView);
 
+        // Create an intent for the email
         Intent detailsIntent = getIntent();
         recipient = detailsIntent.getStringExtra("Recipient");
 
@@ -48,28 +56,34 @@ public class EmailActivity extends AppCompatActivity {
         thursday = detailsIntent.getStringExtra("Thursday");
         friday = detailsIntent.getStringExtra("Friday");
 
+        // Generate the body of the email messages
         bodyText = getResources().getString(R.string.body_message);
 
-        if ((monday != null) && !monday.equals("NA"))
+        // If the Monday, Tuesday, Wednesday, Thursday, or Friday is selected
+        if ((monday != null))
             bodyText += " Monday at " + monday;
-        if ((tuesday != null) && !tuesday.equals("NA"))
+        else if ((tuesday != null) )
             bodyText += " Tuesday at " + tuesday;
-        if ((wednesday != null) && !wednesday.equals("NA"))
+        else if ((wednesday != null) )
             bodyText += " Wednesday at " + wednesday;
-        if ((thursday != null) && !thursday.equals("NA"))
+        else if ((thursday != null) )
             bodyText += " Thurday at " +  thursday;
-        if ((friday != null) && !friday.equals("NA"))
+        else if ((friday != null))
             bodyText += " Friday at " + friday;
 
         bodyText += ". \nThank you.";
 
+        // Display the email of the recipient
         recipientEditText.setText(recipient);
 
+        // Display the subject
         subject = getResources().getString(R.string.subject_content);
         subjectEditText.setText(subject);
 
+        // Display the contents
         contentsEditText.setText(bodyText);
 
+        // The button to compose the email
         Button startBtn = (Button) findViewById(R.id.emailSendButton);
         startBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -79,18 +93,23 @@ public class EmailActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * This function is used to generate an intent to send the composed email
+     */
     protected void sendEmail() {
 
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                 "mailto", recipient, null));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT,
-                subject);
-        emailIntent.putExtra(Intent.EXTRA_TEXT,
-                bodyText);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, bodyText);
         startActivity(Intent.createChooser(emailIntent, "Send email"));
     }
 
 
+    /**
+     * This function is used to shake the envelope Image if the image is clicked
+     * @param view
+     */
     public void setEvelopeShake(View view) {
         evelopeAnim = AnimationUtils.loadAnimation(this, R.anim.shake_custom);
 
