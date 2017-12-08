@@ -29,6 +29,8 @@
         </activity>
         <activity android:name=".OCCMapActivity">
         </activity>
+        <activity android:name=".ClockSplashActivity">
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

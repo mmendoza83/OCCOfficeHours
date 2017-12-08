@@ -12,7 +12,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -33,12 +32,8 @@ public class SearchByDepartmentActivity extends AppCompatActivity {
     private Spinner instructorSpinner;
     private ListView offeringsListView;
 
-    private OfferingListAdapter offeringsListAdapter;
-    private ImageView clockAnim;
-
     // Shake animation, used when the user clicks the reset button
     private Animation shakeAnim;
-    private Animation rotateAnim;
 
     // Sensor variables
     private SensorManager mSensorManager;
@@ -69,8 +64,6 @@ public class SearchByDepartmentActivity extends AppCompatActivity {
         allOfferingsList = db.getAllOfferings();
         filteredOfferingsList = new ArrayList<>(allOfferingsList);
         allDepartmentsList = db.getAllInstructors();
-        clockAnim = (ImageView) findViewById(R.id.clockAnimImageView);
-
 
         Log.i("Number of instructors: ", "" + allDepartmentsList.size());
 
@@ -164,18 +157,6 @@ public class SearchByDepartmentActivity extends AppCompatActivity {
         offeringsListView.startAnimation(shakeAnim);
     }
 
-    public void toggleRotateAnim(View view ) {
-        if (rotateAnim == null)// hasnt been initialize yet
-        {
-            rotateAnim = AnimationUtils.loadAnimation(this, R.anim.rotate_anim);
-        }
-        if (!rotateAnim.hasStarted() || rotateAnim.hasEnded())
-            clockAnim.startAnimation(rotateAnim);
-
-            //connect it to the image view
-        else
-            clockAnim.clearAnimation();
-    }
     /**
      * Starts the InstructorDetailsActivity.
      * Sends the selected instructor's details to be displayed for the user.
@@ -184,7 +165,6 @@ public class SearchByDepartmentActivity extends AppCompatActivity {
      */
     public void viewInstructorDetails(View v)
     {
-        toggleRotateAnim(v);
         LinearLayout selectedLayout = (LinearLayout) v;
         Offering selectedOffering = (Offering) selectedLayout.getTag();
         Instructor selectedInstructor = (Instructor) selectedOffering.getInstructor();

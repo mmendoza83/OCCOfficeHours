@@ -22,7 +22,7 @@ public class SearchActivity extends AppCompatActivity {
      */
     public void searchInstructors(View v)
     {
-        Intent searchByInstructorsIntent = new Intent(this, SearchByInstructorActivity.class);
+        Intent searchByInstructorsIntent = new Intent(this, ClockSplashActivity.class);
         startActivity(searchByInstructorsIntent);
     }
 
