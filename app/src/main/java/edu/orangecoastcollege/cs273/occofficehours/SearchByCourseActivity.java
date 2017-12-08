@@ -20,14 +20,16 @@ import java.util.List;
 
 public class SearchByCourseActivity extends AppCompatActivity {
 
+    //Variables for the lists
     private DBHelper db;
     private List<Course> allCoursesList;
     private List<Offering> allOfferingsList;
     private List<Offering> filteredOfferingsList;
     private OfferingListAdapter offeringListAdapter;
-
-    private Spinner courseSpinner;
     private ListView offeringsListView;
+
+    // Spinner that displays all the possible courses to choose from.
+    private Spinner courseSpinner;
 
     // Shake animation, used when the user clicks the reset button
     private Animation shakeAnim;
@@ -78,7 +80,7 @@ public class SearchByCourseActivity extends AppCompatActivity {
      * Collects all course titles into an array.
      * Used to populate the spinner.
      *
-     * @return
+     * @return The array of course titles.
      */
     private String[] getCourses()
     {
@@ -107,6 +109,9 @@ public class SearchByCourseActivity extends AppCompatActivity {
         offeringListAdapter.addAll(allOfferingsList);
     }
 
+    /**
+     * Listener for the spinner. Updates the list of selectable instructors based on the chosen option.
+     */
     public AdapterView.OnItemSelectedListener courseSpinnerListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> spinner, View view, int i, long l) {
@@ -166,12 +171,14 @@ public class SearchByCourseActivity extends AppCompatActivity {
         startActivity(detailsIntent);
     }
 
+    // Re-registers the sensors for when the app is resumed.
     @Override
     protected void onResume() {
         super.onResume();
         mSensorManager.registerListener(mShakeDetector, accelerometer, SensorManager.SENSOR_DELAY_UI);
     }
 
+    // Stops the sensors from running once the app has stopped.
     @Override
     protected void onStop() {
         super.onStop();
