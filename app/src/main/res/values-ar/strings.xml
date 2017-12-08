@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OCC Office Hours</string>
+    <string name="splash_text">الساعات المكتبية</string>
+    <string name="filter_by_instructor_text">البحث عن الاستاذ</string>
+    <string name="filter_by_course_text">البحث عن الصف</string>
+    <string name="filter_by_department_text">البحث عن الفرع</string>
+    <string name="search_for_instructors_text">البحث عن الاستاذ</string>
+    <string name="search_courses">البحث عن الصف</string>
+    <string name="search_instructors">البحث عن الاستاذ</string>
+    <string name="search_departments">البحث عن الفرع</string>
+    <string name="office_hours_text">الساعات المكتبية</string>
+    <string name="monday_text">الاثنين</string>
+    <string name="tuesday_text">الثلاثاء</string>
+    <string name="wednesday_text">الاربعاء</string>
+    <string name="thursday_text">الخميس</string>
+    <string name="friday_text">الجمعة</string>
+    <string name="make_reservation">اطلب موعد</string>
+    <string name="from">من</string>
+    <string name="to">الى</string>
+    <string name="subject">العنوان</string>
+    <string name="subject_content">اطلب موعد للساعات المكتبية</string>
+    <string name="contents">المحتوى</string>
+    <string name="send_button">ارسل</string>
+</resources>
