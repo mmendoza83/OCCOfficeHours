@@ -18,6 +18,12 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity that allows the user to select a course from a dropdown menu of all the courses.
+ * Displays the instructors for that course.
+ *
+ * Created by mmendoza on 12/1/2017.
+ */
 public class SearchByCourseActivity extends AppCompatActivity {
 
     //Variables for the lists
