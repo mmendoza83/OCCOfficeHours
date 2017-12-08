@@ -107,7 +107,7 @@ class DBHelper extends SQLiteOpenHelper {
         onCreate(database);
     }
 
-    //********** COURSE TABLE OPERATIONS:  ADD, GETALL, EDIT, DELETE
+    //********** COURSE TABLE OPERATIONS:  ADD, GETALL, GET
 
     public void addCourse(Course course)
     {
@@ -178,7 +178,7 @@ class DBHelper extends SQLiteOpenHelper {
         return course;
     }
 
-    //********** INSTRUCTOR TABLE OPERATIONS:  ADD, GETALL, EDIT, DELETE
+    //********** INSTRUCTOR TABLE OPERATIONS:  ADD, GETALL, GET
 
     public void addInstructor(Instructor instructor) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -235,42 +235,6 @@ class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         database.close();
         return instructorsList;
-    }
-
-    public void deleteInstructor(Instructor instructor) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        // DELETE THE TABLE ROW
-        db.delete(INSTRUCTORS_TABLE, INSTRUCTORS_KEY_FIELD_ID + " = ?",
-                new String[]{String.valueOf(instructor.getId())});
-        db.close();
-    }
-
-    public void deleteAllInstructors() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(INSTRUCTORS_TABLE, null, null);
-        db.close();
-    }
-
-    public void updateInstructor(Instructor instructor) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put(FIELD_FIRST_NAME, instructor.getFirstName());
-        values.put(FIELD_LAST_NAME, instructor.getLastName());
-        values.put(FIELD_EMAIL, instructor.getEmail());
-        values.put(FIELD_DEPARTMENT, instructor.getDepartment());
-        values.put(FIELD_BUILDING,instructor.getBuilding());
-        values.put(FIELD_ROOM,instructor.getRoom());
-        values.put(FIELD_M_HOURS,instructor.getMonday());
-        values.put (FIELD_T_HOURS,instructor.getTuesday());
-        values.put(FIELD_W_HOURS,instructor.getWednesday());
-        values.put(FIELD_R_HOURS,instructor.getThursday());
-        values.put(FIELD_F_HOURS,instructor.getFriday());
-
-        db.update(INSTRUCTORS_TABLE, values, INSTRUCTORS_KEY_FIELD_ID + " = ?",
-                new String[]{String.valueOf(instructor.getId())});
-        db.close();
     }
 
     public Instructor getInstructor(long id) {

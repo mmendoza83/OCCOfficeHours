@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/OCCOfficeHours.iml" filepath="$PROJECT_DIR$/OCCOfficeHours.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/OCCOfficeHours.iml" filepath="$PROJECT_DIR$/.idea/OCCOfficeHours.iml" />
-      <module fileurl="file://C:\swedj_000\Desktop\School\OCCOfficeHours\OCCOfficeHours.iml" filepath="C:\swedj_000\Desktop\School\OCCOfficeHours\OCCOfficeHours.iml" />
-      <module fileurl="file://C:\Users\swedj_000\Desktop\School\OCCOfficeHours\OCCOfficeHours.iml" filepath="C:\Users\swedj_000\Desktop\School\OCCOfficeHours\OCCOfficeHours.iml" />
+      <module fileurl="file://C:/swedj_000/Desktop/School/OCCOfficeHours/OCCOfficeHours.iml" filepath="C:/swedj_000/Desktop/School/OCCOfficeHours/OCCOfficeHours.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
