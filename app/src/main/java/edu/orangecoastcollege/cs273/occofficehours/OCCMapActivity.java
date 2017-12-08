@@ -27,6 +27,12 @@ public class OCCMapActivity extends AppCompatActivity implements OnMapReadyCallb
         mapFragment.getMapAsync(this);
     }
 
+    /**
+     * get the positioning of the OCC campus
+     * adding a special marker for the location of OCC campus
+     * focusing the position of the school so the map load to where the school is
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;

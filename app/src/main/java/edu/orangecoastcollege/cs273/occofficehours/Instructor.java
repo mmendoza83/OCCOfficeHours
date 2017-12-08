@@ -39,102 +39,118 @@ public class Instructor {
         this(-1, lastName, firstName, email, department,building,room,monday,tuesday,wednesday,thursday,friday);
     }
 
+    /**
+     *
+     * @return the id of the instructor
+     */
     public long getId() {
         return mId;
     }
 
+    /**
+     * set the id of the instructor
+     * @param id
+     */
     void setId(int id)
     {
         mId = id;
     }
 
+    /**
+     *
+     * @return the last name of the instructor
+     */
     public String getLastName() {
         return mLastName;
     }
 
-    public void setLastName(String lastName) {
-        mLastName = lastName;
-    }
 
+    /**
+     *
+     * @return the first name of the instructor
+     */
     public String getFirstName() {
         return mFirstName;
     }
 
-    public void setFirstName(String firstName) {
-        mFirstName = firstName;
-    }
-
+    /**
+     *
+     * @return the full name of the instructor (first name + last name)
+     */
     public String getFullName() {
         return mFirstName + " " + mLastName;
     }
 
+    /**
+     *
+     * @return the email address of the instructor
+     */
     public String getEmail() {
         return mEmail;
     }
 
-    public void setEmail(String email) {
-        mEmail = email;
-    }
-
+    /**
+     *
+     * @return the department of the instructor
+     */
     public String getDepartment() { return mDepartment; }
 
-    public void setDepartment(String departments) { mDepartment = departments; }
-
+    /**
+     *
+     * @return the building of the instructor office
+     */
     public String getBuilding() {
         return mBuilding;
     }
 
-    public void setBuilding(String building) {
-        mBuilding = building;
-    }
-
+    /**
+     *
+     * @return the room number of the instructor
+     */
     public String getRoom() {
         return mRoom;
     }
 
-    public void setRoom(String room) {
-        mRoom = room;
-    }
-
+    /**
+     *
+     * @return the instructor office hours on monday
+     */
     public String getMonday() {
         return mMonday;
     }
 
-    public void setMonday(String monday) {
-        mMonday = monday;
-    }
-
+    /**
+     *
+     * @return the instructor office hours on tuesday
+     */
     public String getTuesday() {
         return mTuesday;
     }
 
-    public void setTuesday(String tuesday) {
-        mTuesday = tuesday;
-    }
-
+    /**
+     *
+     * @return the instructor office hours on wednesday
+     */
     public String getWednesday() {
         return mWednesday;
     }
 
-    public void setWednesday(String wednesday) {
-        mWednesday = wednesday;
-    }
-
+    /**
+     *
+     * @return the instructor office hours on thursday
+     */
     public String getThursday() {
         return mThursday;
     }
 
-    public void setThursday(String thursday) {
-        mThursday = thursday;
-    }
-
+    /**
+     *
+     * @return the instructor office hours on friday
+     */
     public String getFriday() {
         return mFriday;
     }
 
-    public void setFriday(String friday) {
-        mFriday = friday;
-    }
 
     @Override
     public String toString() {
