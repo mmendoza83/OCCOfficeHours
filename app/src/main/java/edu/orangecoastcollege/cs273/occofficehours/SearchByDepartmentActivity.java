@@ -1,8 +1,11 @@
 package edu.orangecoastcollege.cs273.occofficehours;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -13,10 +16,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
-//import android.widget.ThemedSpinnerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+//import android.widget.ThemedSpinnerAdapter;
 
 public class SearchByDepartmentActivity extends AppCompatActivity {
 
@@ -36,10 +40,24 @@ public class SearchByDepartmentActivity extends AppCompatActivity {
     private Animation shakeAnim;
     private Animation rotateAnim;
 
+    // Sensor variables
+    private SensorManager mSensorManager;
+    private Sensor accelerometer;
+    private ShakeDetector mShakeDetector;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_by_department);
+
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        accelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mShakeDetector = new ShakeDetector(new ShakeDetector.OnShakeListener() {
+            @Override
+            public void onShake() {
+                reset(findViewById(R.id.offeringsListView));
+            }
+        });
 
         deleteDatabase(DBHelper.DATABASE_NAME);
         db = new DBHelper(this);
@@ -182,5 +200,17 @@ public class SearchByDepartmentActivity extends AppCompatActivity {
         detailsIntent.putExtra("Thursday", selectedInstructor.getThursday());
         detailsIntent.putExtra("Friday", selectedInstructor.getFriday());
         startActivity(detailsIntent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSensorManager.registerListener(mShakeDetector, accelerometer, SensorManager.SENSOR_DELAY_UI);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mSensorManager.unregisterListener(mShakeDetector, accelerometer);
     }
 }
