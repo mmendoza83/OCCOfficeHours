@@ -5,8 +5,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class EmailActivity extends AppCompatActivity {
 
@@ -23,6 +26,9 @@ public class EmailActivity extends AppCompatActivity {
     private String thursday;
     private String friday;
 
+    private Animation evelopeAnim;
+    private ImageView envelopImageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,7 @@ public class EmailActivity extends AppCompatActivity {
         recipientEditText = (EditText) findViewById(R.id.emailRecipientEditText);
         subjectEditText = (EditText)findViewById(R.id.emailSubjectEditText);
         contentsEditText = (EditText) findViewById(R.id.emailMessageBodyEditText);
+        envelopImageView = (ImageView) findViewById(R.id.envelopImageView);
 
         Intent detailsIntent = getIntent();
         recipient = detailsIntent.getStringExtra("Recipient");
@@ -82,6 +89,14 @@ public class EmailActivity extends AppCompatActivity {
                 bodyText);
         startActivity(Intent.createChooser(emailIntent, "Send email"));
     }
+
+
+    public void setEvelopeShake(View view) {
+        evelopeAnim = AnimationUtils.loadAnimation(this, R.anim.shake_custom);
+
+        if (!evelopeAnim.hasStarted() || evelopeAnim.hasEnded())
+            envelopImageView.startAnimation(evelopeAnim);    }
+
 }
 
 

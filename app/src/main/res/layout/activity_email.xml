@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="edu.orangecoastcollege.cs273.occofficehours.EmailActivity">
 
     <TextView
@@ -69,7 +70,7 @@
     <EditText
         android:id="@+id/emailMessageBodyEditText"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:inputType="text"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -78,12 +79,22 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
 
+    <ImageView
+        android:id="@+id/envelopImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailMessageBodyEditText"
+        android:onClick="setEvelopeShake"
+        android:clickable="true"
+        app:srcCompat="@drawable/envelope" />
+
     <Button
         android:id="@+id/emailSendButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/emailMessageBodyEditText"
         android:layout_centerHorizontal="true"
+        android:textSize="30sp"
         android:padding="10dp"
         android:text="@string/compose_email_button"/>
 

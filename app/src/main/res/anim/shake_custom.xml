@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Comments - from 0 to left 5% -->
     <translate android:fromXDelta="0"
-               android:toXDelta="-5%p"
-                android:duration="100" />
+        android:toXDelta="-2%p"
+        android:duration="100" />
 
-    <!-- Comments - from left 5% to right 5%-->
-    <translate android:fromXDelta="-5%p"
-        android:toXDelta="5%p"
-        android:duration="200"
-        android:startOffset="100"/>
+    <translate android:fromXDelta="-2%p"
+        android:toXDelta="2%p"
+        android:duration="100"
+        android:startOffset="50"/>
 
-    <!-- Comments - from right 5% to the left 5%-->
-    <translate android:fromXDelta="5%"
-        android:toXDelta="-5%p"
-        android:duration="200"
-        android:startOffset="300"/>
-
+    <translate android:fromXDelta="2%p"
+        android:toXDelta="0%p"
+        android:duration="100"
+        android:startOffset="150"/>
 </set>
