@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -93,7 +94,6 @@ class DBHelper extends SQLiteOpenHelper {
                 + INSTRUCTORS_TABLE + "(" + INSTRUCTORS_KEY_FIELD_ID + "))";
 
         database.execSQL(createQuery);
-
     }
 
     @Override
@@ -150,6 +150,7 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     public Course getCourse(long id) {
+        Course course = null;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 COURSES_TABLE,
@@ -160,15 +161,20 @@ class DBHelper extends SQLiteOpenHelper {
 
         if (cursor != null)
             cursor.moveToFirst();
-
-        Course course = new Course(
-                cursor.getLong(0),
-                cursor.getString(1),
-                cursor.getString(2),
-                cursor.getString(3));
+        try {
+            course = new Course(
+                    cursor.getLong(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3));
 
         cursor.close();
         db.close();
+        }
+        catch(CursorIndexOutOfBoundsException e)
+        {
+            Log.e("OfficeHours", "Error reading course with id" + id );
+        }
         return course;
     }
 
@@ -298,7 +304,7 @@ class DBHelper extends SQLiteOpenHelper {
         return instructor;
     }
 
-    //********** OFFERING TABLE OPERATIONS:  ADD, GETALL, EDIT, DELETE
+    //********** OFFERING TABLE OPERATIONS:  ADD, GETALL
 
     public void addOffering(long courseId, long instructorId) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -326,8 +332,10 @@ class DBHelper extends SQLiteOpenHelper {
         //COLLECT EACH ROW IN THE TABLE
         if (cursor.moveToFirst()) {
             do {
-                Instructor instructor = getInstructor(cursor.getLong(0));
-                Course course = getCourse(cursor.getLong(1));
+                long instructorId = cursor.getLong(0);
+                Instructor instructor = getInstructor(instructorId);
+                long courseId = cursor.getLong(1);
+                Course course = getCourse(courseId);
                 Offering offering = new Offering(course, instructor);
 
                 offeringsList.add(offering);
