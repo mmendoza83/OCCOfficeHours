@@ -1,6 +1,7 @@
 package edu.orangecoastcollege.cs273.occofficehours;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -26,8 +28,11 @@ public class SearchByInstructorActivity extends AppCompatActivity {
     private Spinner instructorSpinner;
     private ListView offeringsListView;
 
+    private ImageView clockAnim;
+
     // Shake animation, used when the user clicks the reset button
     private Animation shakeAnim;
+    private Animation rotateAnim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,9 @@ public class SearchByInstructorActivity extends AppCompatActivity {
                 new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getInstructorNames());
         instructorSpinner.setAdapter(instructorSpinnerAdapter);
         instructorSpinner.setOnItemSelectedListener(instructorSpinnerListener);
+
+
+        clockAnim = (ImageView) findViewById(R.id.clockAnimImageView);
     }
 
     /**
@@ -126,14 +134,29 @@ public class SearchByInstructorActivity extends AppCompatActivity {
         offeringsListView.startAnimation(shakeAnim);
     }
 
+    public void toggleRotateAnim(View v ) {
+        if (rotateAnim == null)// hasnt been initialize yet
+        {
+            rotateAnim = AnimationUtils.loadAnimation(this, R.anim.rotate_anim);
+        }
+        if (!rotateAnim.hasStarted() || rotateAnim.hasEnded())
+            clockAnim.startAnimation(rotateAnim);
+
+            //connect it to the image view
+        else
+            clockAnim.clearAnimation();
+    }
+
     /**
      * Starts the InstructorDetailsActivity.
      * Sends the selected instructor's details to be displayed for the user.
      *
      * @param v
      */
+
     public void viewInstructorDetails(View v)
     {
+        toggleRotateAnim(v);
         LinearLayout selectedLayout = (LinearLayout) v;
         Offering selectedOffering = (Offering) selectedLayout.getTag();
         Instructor selectedInstructor = (Instructor) selectedOffering.getInstructor();
