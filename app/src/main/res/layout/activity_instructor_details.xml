@@ -164,7 +164,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/wednesdayTextView"
                 android:layout_toRightOf="@+id/wednesdayTextView"
-                android:text="TextView"/>
+                android:text="TextVie"/>
 
             <Button
                 android:id="@+id/wednesdayButton"
